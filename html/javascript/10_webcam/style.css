@@ -1,0 +1,103 @@
+html {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 10px;
+    background: #bac8ff;
+}
+.controls {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.btn-photo {
+    min-width: 99px;
+    height: 50px;
+    border: none;
+    background: #222;
+    color: #fff;
+    border-radius: 5px;
+}
+.photobooth {
+    /* background: white; */
+    max-width: 150rem;
+    margin: 2rem auto;
+    border-radius: 2px;
+    padding: 0 11vw;
+    border-radius: 15px;
+    position: relative;
+}
+
+/*clearfix*/
+.photobooth:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.photo {
+    width: 100%;
+    float: left;
+    /* margin-top: 10px; */
+    border: 2px solid #222;
+    border-radius: 4px;
+    background: #222;
+    /* height: 65vh; */
+}
+
+.player {
+    position: absolute;
+    top: 2px;
+    right: calc(11vw + 2px);
+    width: 20vw;
+    border-radius: 5px;
+}
+
+/*
+  Strip!
+*/
+
+.strip {
+    padding: 0 11vw;
+}
+
+.strip img {
+    width: 100px;
+    overflow-x: scroll;
+    padding: 0.8rem 0.8rem 2.5rem 0.8rem;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.strip a:nth-child(5n + 1) img {
+    transform: rotate(10deg);
+}
+.strip a:nth-child(5n + 2) img {
+    transform: rotate(-2deg);
+}
+.strip a:nth-child(5n + 3) img {
+    transform: rotate(8deg);
+}
+.strip a:nth-child(5n + 4) img {
+    transform: rotate(-11deg);
+}
+.strip a:nth-child(5n + 5) img {
+    transform: rotate(12deg);
+}

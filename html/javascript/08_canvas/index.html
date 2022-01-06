@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML5 Canvas</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🎨 캔퍼스로 자유롭게 그림그리기 🎨</h1>
+            <canvas id="draw" width="500" height="300"></canvas>
+        </div>
+
+        <script>
+            const canvas11 = document.querySelector('#draw');
+            const ctx = canvas11.getContext('2d');
+
+            //캔버스크기 라인스타일
+            canvas11.width = window.innerWidth / 1.25;
+            canvas11.height = window.innerHeight / 1.5;
+            ctx.strokeStyle = '#BADA55';
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            ctx.lineWidth = 50;
+
+            // 초기화
+            let isDrawing = false; //드로우 값 없음
+            let lastX = 0;
+            let lastY = 0;
+            let hue = 0;
+            let direction = true;
+
+            function draw(e) {
+                if (!isDrawing) return; //마우스다운 하지 않을 시 액션을 fuction 멈춤
+                console.log(e);
+                ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+                ctx.beginPath();
+                //시작
+                ctx.moveTo(lastX, lastY);
+                //라인 가는 점
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+                hue++;
+                if (hue >= 360) {
+                    hue = 0;
+                }
+                // lastX = e.offsetX;
+                // lastY = e.offsetY;
+            }
+            canvas11.addEventListener('mousedown', (e) => {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            });
+            canvas11.addEventListener('mousemove', draw); //마우스가 움직일때  그린다.
+            canvas11.addEventListener('mouseup', () => (isDrawing = false)); // 마우습 업시 올리기
+            canvas11.addEventListener('mouseout', () => (isDrawing = false)); // 마우습 업시 올리기
+        </script>
+
+        <style>
+            html,
+            body {
+                margin: 0;
+            }
+            .container {
+                width: 80vw;
+                padding: 10vh;
+                margin: 0 auto;
+            }
+            h1 {
+                text-align: center;
+            }
+            #draw {
+                border: 1px solid #222;
+                border-radius: 20px;
+                margin: 0 auto;
+                background: #000;
+            }
+        </style>
+    </body>
+</html>

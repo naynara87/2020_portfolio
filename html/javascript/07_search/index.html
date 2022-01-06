@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+  <script>
+
+    //API 가져오기
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+    //도시가져와기
+    const cities = [];
+    // const prom = fetch(endpoint);
+    fetch(endpoint) //API 패치화
+      .then(blob => blob.json())
+      .then(data => cities.push(...data))
+
+    //인구수를 메소드 재정의해서 대체해준다.
+    function numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    // 매치된 내용을 찾는다.
+    function findMatches(wordToMatch, cities) {
+      return cities.filter(place => {
+        //우리가 검색한 도시 이름을 필터링해서 가져온다.
+        const regex = new RegExp(wordToMatch, 'gi');
+        return place.city.match(regex) || place.state.match(regex)
+        //도시이름 매치
+      });
+    }
+    // 매치된 내용을 보여준다.
+    function displayMatches() {
+      const matchArray = findMatches(this.value, cities);
+      const html = matchArray.map(place => {
+        const regex = new RegExp(this.value, 'gi');
+        //찾고 있는 도시 이름을 하이라이트로 대체한다.
+        const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+        //찾고 있는 state 하이라이트로 대체한다.
+        const stateName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+
+        return `
+          <li>
+            <span class="name">${cityName}, ${stateName}</span>
+            <span class="population">${numberWithCommas(place.population)}</span>
+          </li>
+        `;
+      }).join('');
+      suggestions.innerHTML = html;
+    }
+    const searchInput = document.querySelector('.search');
+    const suggestions = document.querySelector('.suggestions');
+
+    searchInput.addEventListener('change', displayMatches);
+    searchInput.addEventListener('keyup', displayMatches);
+    //
+  </script>
+</body>
+
+</html>
