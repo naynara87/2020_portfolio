@@ -1,0 +1,34 @@
+/* 포트폴리오 페이지 
+.port__cont 
+.port__item 
+.port__item__img
+.port__item__txt
+*/
+#portCont {
+    background: #000;
+    padding-bottom: 200px;
+}
+.port__cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.port__item {
+    flex: 0 0 32%;
+    margin-bottom: 2%;
+}
+.port__item__txt {
+    padding: 35px 35px 25px 35px;
+    background: #151517;
+}
+.port__item__txt h2 {
+    font-family: 'Saol Display Regular';
+    font-size: 50px;
+    line-height: 1;
+    color: #fff;
+}
+.port__item__txt p {
+    font-size: 16px;
+    color: #b0aead;
+    font-family: 'Rajdhani';
+}

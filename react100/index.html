@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="portfolio">
+    <meta property="og:description" content="portfolio #재밌는 #시크한척 #꿈꾸는 #바보 #퍼블리셔 #나윤주">
+    <meta name="description" content="portfolio #재밌는 #시크한척 #꿈꾸는 #바보 #퍼블리셔 #나윤주">
+    <meta name="keywords" content="portfolio">
+    <meta property="og:url" content="portfolio">
+    <meta property="og:image" content="./assets/img/thumb.png">
+    <link href="../assets/img/favicon.png" rel="shortcut icon">
+    <title>나윤주 포트폴리오</title>
+
+    <!-- 부트스트랩 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- 스타일 -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- aos-js 스타일-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    
+    <!-- loading 스타일-->
+    <link rel="stylesheet" href="../assets/css/load.css">
+
+    <!-- page전환 스타일-->
+    <link rel="stylesheet" href="../assets/css/landingpage.css">
+    </head>
+
+<body naver_screen_capture_injected="true" data-barba="wrapper" >
+    <!-- 로딩애니메이션 -->
+    <!-- loading -->
+    <div class="loading">
+        <div class="load-container">
+            <div class="ico-loading"></div>
+            <span>I create digital awesomeness.</span>
+            <div class="percent mt-3">0%</div>
+        </div>
+    </div>
+    <!-- OVERLAY Loading 끝난뒤 화면 -->
+    <div class="loader-container">
+        <div class="loader-overlay one"></div>
+        <div class="loader-overlay two"></div>
+    </div>
+
+    <!-- logo & 헤더-->
+    <a href="#" class="logo text-indet">logo</a>
+    <header>
+        <nav class="">
+            <span class="title">I create digital awesomeness.</span>
+            
+            <div class="nav-right">
+                <button class="top-menu-btn open">
+                    <span class="text">menu</span>
+                    <span></span>
+                </button>
+                <a href="http://momo87.dothome.co.kr/php/sign/logIn.php" target="_blanck" class="login">로그인</a>
+                <a href="http://momo87.dothome.co.kr/php/board/board.php" target="_blanck" class="board-btn">게시판</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 왼쪽 햄버거 메뉴 -->
+    <aside class="sidebar">
+        <button class="side-menu-btn open">
+            <span class="text">menu</span>
+            <span></span>
+        </button>
+    </aside>
+
+    <!-- 햄버거 버튼 펼침 메뉴 -->
+    <section class="side-menu">
+            <header class="fixed ml-0">
+                <nav>
+                    <span class="title">I create digital awesomeness.</span>
+                    
+                    <div class="nav-right">
+                        <button class="top-menu-btn open">
+                            <span class="text">menu</span>
+                            <span></span>
+                        </button>
+                        <a href="http://momo87.dothome.co.kr/php/sign/logIn.php" target="_blanck" class="login">로그인</a>
+                        <a href="http://momo87.dothome.co.kr/php/board/board.php" target="_blanck" class="board-btn">게시판</a>
+                    </div>
+                </nav>
+            </header>
+            <div class="menu-text">
+                <ul class="w-100">
+                    <li class="page__click" data-name="aboutme">
+                        <a href="#none" onmouseenter="changeImage('url(../assets/img/profile-b.png)')">
+                            <h3>ABOUT ME</h3>
+                        </a>
+                    </li>
+                    <li class="page__click" data-name="web">
+                        <a href="#none" onmouseenter="changeImage('url(../assets/img/bg-sample.png)')">
+                            <h3>WESITE</h3>
+                        </a>
+                    </li>
+                    <li class="page__click" data-name="mobile">
+                        <a href="#none" onmouseenter="changeImage('url(../assets/img/1.jpg)')">
+                            <h3>MOBILE</h3>
+                        </a>
+                    </li>
+                    <li class="page__click" data-name="javascript">
+                        <a href="#none" onmouseenter="changeImage('url(../assets/img/2.jpg)')">
+                            <h3>JAVASCRIPT</h3>
+                        </a>
+                    </li>
+                    <li class="page__click" data-name="animation">
+                        <a href="#none" onmouseenter="changeImage('url(../assets/img/3.jpg)')">
+                            <h3>ANIMATION</h3>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-img" style="background: url(../assets/img/bg-sample.png)no-repeat center; background-size: cover;">
+                <div class="h-100 hover-menu" id="slideImg"></div>
+            </div>
+    </section>
+
+    <!-- 햄버거 버튼 펼침 메뉴 -->
+    <a href="../sub/gallery.html" class="all-btn" title="갤러리">갤러리</a>
+    <span class="scroll-btn" style="transform: rotate(-90deg);">SCROLL</span>
+    <a href="../sub/contact.html" class="contact-btn" title="contact" style="transform: translate(0px, 0px); opacity: 1;">Contact</a>
+
+    <!-- 메인 내용 -->
+    <main data-barba="container" data-barba-namespace="home-section">
+        <!-- 섹션 내용 -->
+        <section class="sec1">
+            <div class="col-md-7  col-12 left-sec px-0">
+                <div class="main-text">
+                    <h1><span class="hide-text i1">HELLO!</span></h1>
+                    <h2><span class="hide-text i2">THIS IS MY</span></h2>
+                    <h1><span class="hide-text i3">PORTFOLIO</span></h1>
+                    <h2><span class="hide-text i4">@2021</span></h2>
+                </div>
+            </div>
+            <div class="col-md-5 col-12 right-sec px-0" style="transform: translate(0px, 0px); opacity: 1;">
+                <div class="top-sec" style="transform: translate(0px, 0px); opacity: 1;">
+                    <div class="notice" data-aos="fade-up">
+                        <label>Notice</label>
+                        <div class="notice-table">
+                            <ul>
+                                <li><a href="http://momo87.dothome.co.kr/php/board/viewBoard.php?boardID=403">[OPEN] 포트폴리오 페이지에 오신 것을 환영합니다.</a></li>
+                                <li><a href="http://momo87.dothome.co.kr/php/board/viewBoard.php?boardID=403">[OPEN] 포트폴리오 페이지에 오신 것을 환영합니다.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-sec">
+                    <div class="name" style="transform: translate(0px, 0px); opacity: 1;">
+                        <span>front-end developer</span>
+                        <h3>NAYOONJU</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap position-relative">
+            <span class="right-move bg-white"></span>
+            <div class="row">
+                <div class="col-md-8" data-aos="fade-up">
+                    <div class="footer-box mb-5" >
+                        <h3>Let's talk</h3>
+                        <a class="btn btn-outline-light px-4 rounded-pill" href="sub/contact.html">You can send me the message</a>
+                    </div>
+    
+                </div>
+                <div class="col-md-4 mb-2" data-aos="fade-up">
+                    <div class="footer-box">
+                        <h3>Contents</h3>
+                        <ul>
+                            <li><a href="../sub/aboutme.html">About me</a></li>
+                            <li><a href="../sub/web.html">Web</a></li>
+                            <li><a href="../sub/mobile.html">Mobile</a></li>
+                            <li><a href="../sub/javascript.html">Javascript</a></li>
+                            <li><a href="../sub/animation.html">Animation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12" data-aos="fade-up">
+                    <ul class="footer-box d-flex">
+                        <li>
+                            <a href="https://naynara.tistory.com/">Blog</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/naynara87/"
+                                >Instagram</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://codepen.io/your-work/"
+                                >Codepen</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://github.com/naynara87"
+                                >Github</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right w-100 d-block">
+            Copyright© 2020 naynara
+        </div>
+    </footer>
+
+    
+    <!-- 자바스크립트 모달 -->
+    <div class="modal fade" id="js-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
+        <div class="modal-content">
+            <div class="modal-body">
+                <button class="modal-tab-btn" data-dismiss="modal">코드보기</button>
+                <button class="modal-tab-btn t-1" data-dismiss="modal">닫기</button>
+                <iframe class="w-100" src="../html/javascript/to-do-list.html"></iframe>
+                <h3 class="modal-title text-center mt-2" id="exampleModalCenterTitle">투두리스트</h3>
+                <p class="text-center text-secondary" style="font-size: 1rem;">자바스크립트 addclass/removeclass를 이용</p>
+            </div>
+            <!-- <div class="modal-footer">
+                <div class="btn btn-group mx-auto">
+                   <button class="btn btn-dark px-3" data-dismiss="modal" aria-label="Close">코드보기</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!--스크롤애니메이션 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ==" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js" integrity="sha512-QcYm1q7RbnXmwY7HJ0H7938IS0MalTPYqGUF0fIwQgEjMBt2tqjDBt+R5I+ppdwEohjMdHnFU0H+RxmrGQ8qcg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+    <!-- three js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js" integrity="sha256-3mBEX8I0uMLF7+AUjJeTCelosuorzYpqwBMBPDTyQqY=" crossorigin="anonymous"></script>
+    
+    <!-- 랜딩애니메이션 -->
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="../assets/js/loading.js"></script>
+    <script src="../assets/js/landingMotions.js"></script>
+    <!-- hover-effect js -->
+    <script src="../assets/js/hover-effect.umd.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main-scroll.js"></script>
+    <script src="../assets/js/mainflow.js"></script>
+    <!-- 스크롤시 하나씩 나옴 -->
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <script src="../assets/js/aos-scroll.js"></script>
+    <!-- 내용넣기 -->
+    <script src="../assets/js/javascript-data.js"></script>
+    <script>
+        $(document).ready(function () {
+            var list = $('.js-list');
+            var list_block;
+            var body = $('body');
+            for (var key in js_list) {
+                list_block = $('<div class="col-md-6 item"></div>');
+                list.append(list_block);
+                list_block.append(
+                    '<p data-aos="fade-down">Javascript ' +
+                        js_list[key].num +
+                        '</p>',
+                );
+                list_block.append(
+                    '<h3 data-aos="fade-down">' +
+                        js_list[key].title +
+                        '</h3>',
+                );
+                list_block.append(
+                    '<div class="w-100 iftoggle" data-toggle="modal" data-target="#js-modal" data-aos="fade-up"' +
+                        'data-link="' +
+                        js_list[key].ifUrl +
+                        '" data-code="' +
+                        js_list[key].codeUrl +
+                        '" data-title="' +
+                        js_list[key].title +
+                        '">' +
+                        '<img src="../assets/img/' +
+                        js_list[key].images +
+                        '" alt="' +
+                        js_list[key].title +
+                        '"></div>',
+                );
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $('#js-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var recipient = button.data('link');
+            var code = button.data('code');
+            var title = button.data('title');
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            modal
+                .find('.modal-body iframe')
+                .attr('src', './html/javascript/' + recipient);
+            modal.find('.modal-body .code-btn').attr('href', code);
+            modal.find('.modal-body h3').text(title);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+//Base
+@import './assets/styles/fonts';
+@import './assets/styles/variables';
+@import './assets/styles/base';
+@import './assets/styles/mixins';
+
+//loader
+@import './assets/styles/loader';
+
+//layout
+@import './assets/styles/layout';
+
+//main
+@import './assets/styles/main';
+
+//about
+@import './assets/styles/about';
+
+//reference
+@import './assets/styles/reference';
+
+//youtube
+@import './assets/styles/youtube';
+
+//script
+@import './assets/styles/script';
+
+//contact
+@import './assets/styles/contact';
+
+//portfolio
+@import './assets/styles/portfolio';
+
+//aos.scss
+@import './assets/styles/animations';

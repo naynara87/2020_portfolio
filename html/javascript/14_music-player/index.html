@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Music Player</title>
+        <style>
+            @font-face {
+                font-family: 'MyLotteBold';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.0/MyLotteBold.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'MyLotteMedium';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.0/MyLotteMedium.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            * {
+                font-family: 'MyLotteMedium';
+            }
+            body {
+                background-color: #222;
+                color: #fff;
+                min-height: 1000px;
+                letter-spacing: 0.6px;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 1140px;
+                margin: 0 auto;
+            }
+
+            header {
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 50px;
+                margin-bottom: 0;
+            }
+
+            header p {
+                line-height: 26px;
+                font-weight: 300;
+                padding: 0 130px;
+            }
+
+            nav {
+                display: inline-block;
+                width: 100%;
+                border-top: 1px solid;
+            }
+
+            nav ul {
+                padding-left: 0;
+            }
+
+            nav ul.left {
+                float: left;
+            }
+
+            nav ul.right {
+                float: right;
+            }
+
+            nav ul li {
+                list-style: none;
+                display: inline-block;
+                margin-right: 25px;
+            }
+
+            nav ul li:last-child {
+                margin-right: 0;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #ffffff;
+            }
+
+            .play_btn img {
+                border-radius: 40px;
+                border: 2px solid #fff;
+                margin: 0 2px;
+            }
+
+            .autoplay_btn label {
+                display: flex;
+                align-items: center;
+            }
+
+            .autoplay_btn h5 {
+                margin: 0;
+                font-weight: 500;
+            }
+
+            .autoplay_btn span {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 25px;
+                border: 2px solid #228be6;
+                border-radius: 50px;
+                margin-left: 5px;
+                transition: all ease 0.5s;
+            }
+
+            .autoplay_btn span::before {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 19px;
+                background: #228be6;
+                border-radius: 50px;
+                top: 3px;
+                left: 4px;
+                transition: all ease 0.5s;
+            }
+
+            .autoplay_btn input:checked ~ span {
+                border-color: #1c7ed6;
+                box-shadow: 0 5px 25px rgb(62 62 103 / 0.5), 0 0 25px rgb(62 62 103 / 0.5);
+                background: rgb(114 112 202 / 0.2);
+            }
+
+            .autoplay_btn input:checked ~ span:before {
+                left: 36px;
+                box-shadow: 0 5px 25px rgb(62 62 103 / 0.5), 0 0 25px rgb(62 62 103 / 0.5);
+                background: #1c7ed6;
+            }
+
+            .autoplay_btn input {
+                display: none;
+            }
+
+            .body_content {
+                margin-top: 30px;
+            }
+
+            .body_content .title {
+                font-family: 'MyLotteBold';
+                font-weight: bold;
+                background: #1c7ed6;
+                color: #fff;
+                padding: 20px 5px;
+                border-radius: 10px;
+                display: flex;
+            }
+
+            .body_content .title span {
+                font-size: 20px;
+            }
+
+            .body_content .title span:nth-child(1),
+            .body_content .list_block span:nth-child(1) {
+                width: 8%;
+            }
+
+            .body_content .title span:nth-child(2),
+            .body_content .list_block span:nth-child(2) {
+                width: 35%;
+            }
+
+            .body_content .title span:nth-child(3),
+            .body_content .list_block span:nth-child(3) {
+                width: 16%;
+            }
+
+            .body_content .title span:nth-child(4),
+            .body_content .list_block span:nth-child(4) {
+                width: 16%;
+            }
+
+            .body_content .title span:nth-child(5),
+            .body_content .list_block span:nth-child(5) {
+                width: 10%;
+            }
+
+            .body_content .title span:nth-child(6),
+            .body_content .list_block span:nth-child(6) {
+                width: 100px;
+            }
+            .body_content .title span:nth-child(7),
+            .body_content .list_block span:nth-child(7) {
+                width: 15px;
+            }
+
+            .body_content .list_block {
+                position: relative;
+                padding: 20px 5px;
+                background: #000;
+                border: 1px solid transparent;
+                border-radius: 10px;
+                margin-top: 25px;
+                display: flex;
+                align-items: center;
+            }
+
+            .body_content .list_block span {
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            .body_content .list_block .download_btn {
+                position: absolute;
+                right: 30px;
+            }
+
+            .body_content .list_block .download_btn:hover {
+                opacity: 0.7;
+            }
+
+            /* 비트 애니메이션 */
+            .body_content .beat_animation ul {
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+
+            .body_content .beat_animation ul li {
+                list-style: none;
+                height: 40px;
+                width: 3px;
+                background-color: #fff;
+                display: inline-block;
+                margin: 0 5px;
+                transform-origin: bottom;
+                opacity: 0.1;
+                animation: beat 1s linear 0s infinite;
+                animation-play-state: paused;
+            }
+
+            @keyframes beat {
+                50% {
+                    transform: scaleY(0);
+                }
+            }
+
+            .body_content .beat_animation li:nth-child(1) {
+                animation-delay: 0.2s;
+            }
+
+            .body_content .beat_animation li:nth-child(2) {
+                animation-delay: 0.4s;
+            }
+
+            .body_content .beat_animation li:nth-child(4) {
+                animation-delay: 0.3s;
+            }
+
+            .body_content .beat_animation li:nth-child(6) {
+                animation-delay: 0.5s;
+            }
+
+            .body_content .list_block.isPlaying {
+                border: 1px solid #4b4980;
+                box-shadow: 0 5px 25px #1c7ed65e, 0 0 15px #1c7ed65e;
+            }
+
+            /* play button */
+            .body_content span.play_btn {
+                text-align: center;
+            }
+
+            .body_content span.play_btn img {
+                cursor: pointer;
+                border-radius: 50px;
+                transition: all ease 0.5s;
+            }
+
+            .body_content span.play_btn .pause_icon {
+                display: none;
+            }
+
+            .body_contet .list_block.isPlaying span.play_btn img {
+                box-shadow: 0 5px 25px #1c7ed6, 0 0 15px #1c7ed6;
+            }
+
+            /* hide audio track */
+            .body_content .list_block .track {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrappr">
+            <div class="container">
+                <header>
+                    <h1>코딩하기 좋은 기타 BGM LIST</h1>
+                    <p>@2021</p>
+                    <nav>
+                        <ul class="left">
+                            <li><a href="#">Recently added</a></li>
+                            <li><a href="#">Top Rop</a></li>
+                            <li><a href="#">Best of the year</a></li>
+                            <li><a href="#">Highly recommend</a></li>
+                        </ul>
+                        <ul class="right">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Request</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li class="autoplay_btn">
+                                <a href="#">
+                                    <label>
+                                        <h5>AutoPlay</h5>
+                                        <input type="checkbox" />
+                                        <span></span>
+                                    </label>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="body_content">
+                    <div class="title">
+                        <span></span>
+                        <span>TITLE</span>
+                        <span>ARTIST</span>
+                        <span>GENRE</span>
+                        <span>DURATION</span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jquery cdn -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="data.js"></script>
+        <script>
+            $(document).ready(function () {
+                var list = $('.list');
+                var list_block;
+                for (var key in song_list) {
+                    list_block = $('<div class="list_block"></div>');
+                    list.append(list_block);
+                    list_block.append('<span class="play_btn"><img src="./images/player-play.svg" class="play_icon"><img src="./images/player-pause.svg" class="pause_icon"></span>');
+                    list_block.append('<span class="song_title">' + song_list[key].title + '</span>');
+                    list_block.append('<span class="song_artist">' + song_list[key].artist + '</span>');
+                    list_block.append('<span class="song_genre">' + song_list[key].genre + '</span>');
+                    list_block.append('<span class="song_duration">' + song_list[key].duration + '</span>');
+                    list_block.append('<span class="beat_animation"><ul><li></li><li></li><li></li><li></li><li></li><li></li></ul></span>');
+                    list_block.append('<span class="track"><audio id="audio" controls><source src="songs/' + song_list[key].track + '" type="audio/mp3"></audio></span>');
+                    list_block.append('<span class="download_btn"><a target="_blank" href="./songs/' + song_list[key].track + '"><img src="./images/file-download.svg" class="download_icon"></a></span>');
+                }
+                //play funcion
+                $('.list_block .play_btn .play_icon').on('click', function (current) {
+                    $(this).parent().find('.play_icon').css('display', 'none');
+                    $(this).parent().find('.pause_icon').css('display', 'inline-block');
+                    $('.play_icon').not(this).parent().find('.pause_icon').css('display', 'none');
+                    $('.play_icon').not(this).parent().find('.play_icon').css('display', 'inline-block');
+                    //Add/remove class
+                    $(this).parent().parent().addClass('isPlaying');
+                    $('.play_icon').not(this).parent().parent().removeClass('isPlaying');
+                    //Beat animation play
+                    $(this).parent().parent().find('.beat_animation li').css('animation-play-state', 'running').css('opacity', '1');
+                    $('.play_icon').not(this).parent().parent().find('.beat_animation li').css('animation-play-state', 'paused').css('opacity', '.1');
+
+                    //pause current audio track when play next/prev audio track
+                    $('audio').each(function (e) {
+                        if (e !== current.currentTarget) {
+                            $(this)[0].pause();
+                        }
+                    });
+                    //play current audio track
+
+                    $(this).parent().parent().find('.track audio')[0].play();
+                });
+                //pause function
+                $('.list_block .play_btn .pause_icon').on('click', function () {
+                    //HIDE pause Icon
+                    $(this).parent().find('.pause_icon').css('display', 'none');
+                    $(this).parent().find('.play_icon').css('display', 'inline-block');
+                    //BEAT ANIMATION PAUSE
+                    $(this).parent().parent().find('.beat_animation li').css('animation-play-state', 'paused').css('opacity', '.1');
+                    //PAUSE CURRENT AUDIO TRACK
+                    $(this).parent().parent().find('.track audio')[0].pause();
+                });
+
+                //autoplay fuction
+                $('.autoplay_btn input')
+                    .on('change', function () {
+                        if ($(this).is(':checked')) {
+                            $('audio').on('ended', function () {
+                                $(this).parent().parent().next().find('.track audio')[0].play();
+
+                                $('.list_block').removeClass('isPlaying');
+                                $(this).parent().parent().next().addClass('isPlaying');
+                                $(this).parent().parent().next().find('.beat_animation li').css('animation-play-state', 'running').css('opacity', '1');
+
+                                $(this).parent().parent().next().find('.play_icon').css('display', 'none');
+                                $(this).parent().parent().next().find('.pause_icon').css('display', 'inline-block');
+                            });
+                        } else {
+                            $('audio').on('ended', function () {
+                                $('.pause_icon').css('display', 'none');
+                                $('.play_icon').css('display', 'inline-block');
+                                $('.play_icon').not(this).parent().parent().find('.beat_animation li').css('animation-play-state', 'paused').css('opacity', '.1');
+                            });
+                        }
+                    })
+                    .change();
+            });
+        </script>
+    </body>
+</html>
